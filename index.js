@@ -41,7 +41,7 @@ To save you from having to count the items above, you can assume that length of 
 i.e. is31Flavors(originalFlavors) will return TRUE.*/
 
 function is31Flavors(someArray){
-    if (someArray.length() === 31){
+    if (someArray.length === 31){
         return true;
     } else {return false;}
 }
@@ -57,7 +57,7 @@ Your function should add the flavor to the front of the array and console.log th
 
 For example addFlavor("Rainbow Sherbert", originalFlavors) should return ["Rainbow Sherbert", "Banana Nut Fudge",..."Vanilla Burnt Almond"] */ 
 
-function addFlavor(someArray, someString){
+function addFlavor(someString, someArray){
     return console.log(someArray.unshift(someString));
     
 }
@@ -75,7 +75,7 @@ For example removeLastFlavor(originalFlavors) would return ["Rainbow Sherbert", 
 
 function removeLastFlavor(someArray){
     someArray.pop();
-    return console.log(someArray);
+    return someArray;
 }
 
 /* Task 4: Write a function that returns a flavor at a given index in the array.
@@ -105,7 +105,8 @@ Hint: You can use .splice() for this
 
 function removeFlavorByName(someArray, someString){
 
-    return someArray.splice(someArray.indexOf(someString), 1);
+    someArray.splice(someArray.indexOf(someString), 1);
+    return someArray;
 
 }
 
@@ -117,14 +118,9 @@ Your function should accept:
 2 arguments 1 for your new array and one for your original array
 
 and should return a new array that is identical to the old array. You can name the new array however you'd like. */
-
-function copy(oldArray, newArray){
-
-    let newArray = new Array(oldArray.length());
-    for (i = 0; i < oldArray.length(); i++){
-        newArray.push(oldArray[i]);
-    }
-    return newArray;
+let testArray =[]
+function copy(oldArray, testArray){
+    return testArray = Array.from(oldArray);
 }
 
 /* Task 7: July 7th is "World Chocolate Day" and Baskin Robins wants to create promotional materials highlighting all of their chocolate flavors. Write a function that checks every item in the array for a given string and returns a new array called filteredArray with just these values. Rather than hardcoding "chocolate" into your function, pass a string as a parameter, and invoke with the argument "chocolate". This way you could also filter for "Vanilla", "Sherbert", etc. when those holidays roll around.
@@ -143,13 +139,13 @@ DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem.
 hint - you can use the .includes method to help you solve this */
 
 function filterByWord(someArray, someString){
-    let returnArray;
-    for (i = 0; i < someArray.length(); i++){
-        if (someArray[i].contains(someString)){
+    let returnArray =[];
+    for (i = 0; i < someArray.length; i++){
+        if (someArray[i].includes(someString)){
             returnArray.push(someArray[i]);
         }
     }
-    return newArray;
+    return returnArray;
 }
 
 
@@ -166,10 +162,12 @@ and should return the average number of words per item in the array.
 
 For example, getAverageWordLength(originalFlavors) should return a number between 0 and 3. */
 
-function getAverageWordLength(/*code here*/){
-
-    /*code here*/
-
+function getAverageWordLength(someArray){
+    let numCount = 0;
+    for (i = 0; i < someArray.length; i++){    
+        numCount += someArray[i].split(" ").length;
+    }
+    return numCount / someArray.length;
 }
 
 
@@ -254,8 +252,22 @@ var regionalFlavors = ["Pink Bubblegum",
     "Chocolate Chocolate Chip Cheesecake",
     "Caramel 'n' Cookies"]
 
-function getRandomFlavors(/*code here*/){
+function getRandomFlavors(firstArray, secondArray, thirdArray, fourthArray){
 
-    /*code here*/
+    let workingArray = firstArray.concat(secondArray, thirdArray, fourthArray);
+    let randomArray = [];
+    let ranNum;
+    let i = 0;
 
+    while (i < 31){
+        ranNum = Math.floor(Math.random()*workingArray.length);
+            if (workingArray[ranNum] !== " "){ 
+                randomArray[i] = workingArray[ranNum];
+                workingArray.splice(ranNum, 1, " ");
+                i++
+                ;
+            }
+    }   
+    return randomArray
 }
+
