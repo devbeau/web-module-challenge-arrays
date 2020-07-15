@@ -118,10 +118,17 @@ Your function should accept:
 2 arguments 1 for your new array and one for your original array
 
 and should return a new array that is identical to the old array. You can name the new array however you'd like. */
-let testArray =[]
-function copy(oldArray, testArray){
-    return testArray = Array.from(oldArray);
+;
+
+var testArray = [];
+
+function copy(oldArray, newArray){
+    for (i = 0; i < oldArray.length; i++){
+        newArray.push(oldArray[i]);
+    }
+return newArray;
 }
+
 
 /* Task 7: July 7th is "World Chocolate Day" and Baskin Robins wants to create promotional materials highlighting all of their chocolate flavors. Write a function that checks every item in the array for a given string and returns a new array called filteredArray with just these values. Rather than hardcoding "chocolate" into your function, pass a string as a parameter, and invoke with the argument "chocolate". This way you could also filter for "Vanilla", "Sherbert", etc. when those holidays roll around.
 
