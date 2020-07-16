@@ -30,6 +30,9 @@ var originalFlavors = ["Banana Nut Fudge",
     "Vanilla",
     "Vanilla Burnt Almond"]
 
+    let originalCopy = [];
+    copy(originalFlavors, originalCopy);
+    console.log("This is a copy of the originalFlavors array", originalCopy);
 /* Task 1: Confirm that the array is exactly 31 flavors. Your function should accept:
 
 (1) an array 
@@ -41,8 +44,7 @@ To save you from having to count the items above, you can assume that length of 
 i.e. is31Flavors(originalFlavors) will return TRUE.*/
 
 function is31Flavors(someArray){
-    if (someArray.length === 31){
-        return true;
+    if (someArray.length === 31){return true;
     } else {return false;}
 }
 
@@ -285,5 +287,5 @@ function getRandomFlavors(firstArray, secondArray, thirdArray, fourthArray){
     return randomArray
 }
 
-console.log("This is Stretch 2", getRandomFlavors(originalFlavors, seasonalFlavors, regionalFlavors, newFlavors));
+console.log("This is Stretch 2", getRandomFlavors(originalCopy, seasonalFlavors, regionalFlavors, newFlavors));
 
